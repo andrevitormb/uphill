@@ -1,12 +1,14 @@
 import Search from "@/components/Search"
 import RepoCard from "@/components/RepoCard"
-import UserCard from "@/components/UserCard"
+import MostCards from "@/components/MostCards"
+import TrendingCards from "@/components/TrendingCards"
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-2 ">
+    <main className="flex flex-col gap-2 bg-white items-center">
         <Search/>
-        <UserCard/>
+        <TrendingCards/>
+        <MostCards/>
         <RepoCard/>
     </main>
   )

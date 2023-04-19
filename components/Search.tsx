@@ -4,7 +4,7 @@ import {AiOutlineSearch} from 'react-icons/ai'
 
 const Search = () => {
   return (
-    <div className='flex flex-row gap-2 bg-[#2e3a53] h-30 left-0 p-4 justify-between'>
+    <div className='flex flex-row gap-2 bg-[#2e3a53] h-30 left-0 p-4 justify-between w-full'>
         <Image src={'./transferir.svg'} height={200 } width={200} alt=''/>
         <div className='h-10 w-[50vw] bg-zinc-200 rounded-full flex mr-20'>
             <div className='class="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none"'>
