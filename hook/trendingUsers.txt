@@ -1,0 +1,33 @@
+Este código é um hook do React que busca informações sobre usuários populares no GitHub. Ele utiliza a biblioteca Axios para fazer requisições HTTP e define um tipo UserDetails para armazenar informações sobre cada usuário. Abaixo, você encontrará um passo a passo detalhado de como o código funciona:
+
+1. Importações:
+   - `import { useState, useEffect } from 'react';`: Importa o useState e o useEffect do React, que são usados para gerenciar o estado e os efeitos colaterais no componente.
+   - `import axios from 'axios';`: Importa o Axios, uma biblioteca popular para fazer requisições HTTP.
+
+2. Definição do tipo UserDetails:
+   - Um tipo chamado UserDetails é definido para armazenar informações sobre cada usuário, como login, número de repositórios públicos, seguidores, etc.
+
+3. Função fetchUserDetails:
+   - Essa função assíncrona aceita um nome de usuário como argumento e busca detalhes desse usuário no GitHub utilizando a API do GitHub (https://api.github.com/users/{username}).
+   - Em seguida, ela desestrutura os dados da resposta e armazena as informações relevantes em constantes locais.
+   - A função também busca o repositório com mais estrelas do usuário utilizando a função `fetchTopStarRepository`.
+   - Por fim, retorna um objeto UserDetails com todas as informações coletadas.
+
+4. Função fetchTopStarRepository:
+   - Essa função assíncrona aceita um nome de usuário como argumento e busca o repositório com mais estrelas desse usuário usando a API do GitHub (https://api.github.com/search/repositories).
+   - Ela retorna o repositório com mais estrelas encontrado.
+
+5. Função useTrendingUsers:
+   - Essa função é um hook do React que gerencia o estado das informações dos usuários populares no GitHub.
+   - Ela define um estado chamado `trendingUsers` e uma função `setTrendingUsers` para atualizar esse estado.
+   - Utiliza o useEffect para buscar os usuários populares quando o componente for montado. O useEffect só é executado uma vez, já que o array de dependências está vazio (`[]`).
+   - Dentro do useEffect, a função `fetchTrendingUsers` é definida e chamada para buscar os usuários populares.
+   - A função `fetchTrendingUsers` faz uma requisição à API do GitHub para buscar os usuários com mais seguidores e, em seguida, mapeia esses usuários e utiliza a função `fetchUserDetails` para buscar informações detalhadas de cada usuário.
+   - Os detalhes dos usuários são armazenados em um array de Promises e, em seguida, o Promise.all é usado para aguardar a resolução de todas as Promises.
+   - Os detalhes dos usuários são armazenados no estado `trendingUsers` usando a função `setTrendingUsers`.
+   - Se houver algum erro durante a busca dos usuários populares, ele será registrado no console.
+
+6. Retorno da função useTrendingUsers:
+   - A função retorna o estado `trendingUsers`, que contém as informações dos usuários populares.
+
+Com esse hook, é possível buscar e gerenciar facilmente informações sobre os usuários populares do GitHub em um componente React. Basta importar e utilizar a função `useTrendingUsers()` no componente e acessar o estado `trendingUsers` para exibir as informações dos usu
